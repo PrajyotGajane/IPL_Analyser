@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.stream.StreamSupport;
 
 public abstract class IPLAdaptor {
-      public abstract Map<String, IPLDAO> loadIPLData(String... csvFilePath);
+      public abstract Map<String, IPLDAO> loadIPLData(String... csvFilePath) throws CSVBuilderException, IPLAnalyserException;
 
       public static <E> Map<String, IPLDAO> loadIPLData(Class<E> iplClass, String csvFilePath) throws CSVBuilderException, IPLAnalyserException {
             Map<String, IPLDAO> statisticMap = new HashMap<>();
