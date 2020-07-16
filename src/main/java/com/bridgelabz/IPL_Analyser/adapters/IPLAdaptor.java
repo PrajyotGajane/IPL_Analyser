@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.StreamSupport;
 
@@ -25,6 +26,7 @@ public abstract class IPLAdaptor {
                   ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
                    Iterator<E> csvIterator = icsvBuilder.getCSVFileIterator(reader, iplClass);
                    Iterable<E> csvIterable = () -> csvIterator;
+//                  List<E> csvIterable = icsvBuilder.getCSVFileList(reader, iplClass);
                   if (iplClass.getName() == "com.bridgelabz.IPL_Analyser.models.IPLBatsmanCSV") {
                         StreamSupport.stream(csvIterable.spliterator(), false).
                                 map(IPLBatsmanCSV.class::cast).
@@ -37,7 +39,7 @@ public abstract class IPLAdaptor {
                   return statisticMap;
             } catch (IOException e) {
                  throw new IPLAnalyserException(e.getMessage(),
-                          IPLAnalyserException.ExceptionType.INVALID_STATISTIC_TYPE);
+                          IPLAnalyserException.ExceptionType.STATISTIC_FILE_PROBLEM);
             } catch (RuntimeException e) {
                    throw new IPLAnalyserException(e.getMessage(),
                           IPLAnalyserException.ExceptionType.NO_STATISTIC_DATA);
