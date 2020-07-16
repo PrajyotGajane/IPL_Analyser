@@ -8,12 +8,12 @@ import java.util.Map;
 
 public class IPLAdaptorFactory {
 
-      public <E> Map<String, IPLDAO> getIPLAdaptor(IPLAnalyser.Statistics statistics, String... csvFilePath) throws IPLAnalyserException{
-            if (statistics.equals(IPLAnalyser.Statistics.BATSMAN)) {
+      public <E> Map<String, IPLDAO> getIPLAdaptor(IPLAnalyser.Player statistics, String... csvFilePath) throws IPLAnalyserException{
+            if (statistics.equals(IPLAnalyser.Player.BATSMAN)) {
                   System.out.println("Adaptor factory");
                   return new IPLBatsmanAdapter().loadIPLData(csvFilePath);
             }
-            if (statistics.equals(IPLAnalyser.Statistics.BOWLER))
+            if (statistics.equals(IPLAnalyser.Player.BOWLER))
                   return new IPLBowlerAdapter().loadIPLData(csvFilePath);
             throw new IPLAnalyserException("Invalid stat type", IPLAnalyserException.ExceptionType.INVALID_STATISTIC_TYPE);
       }

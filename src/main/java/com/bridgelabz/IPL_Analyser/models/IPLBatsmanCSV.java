@@ -22,6 +22,16 @@ public class IPLBatsmanCSV {
       @CsvBindByName(column = "6s", required = true)
       public int numOfSix;
 
+      public IPLBatsmanCSV() {
+      }
+
+      public IPLBatsmanCSV(String player, int runs, double average, double strikeRate) {
+            this.player = player;
+            this.runs = runs;
+            this.average = average;
+            this.strikeRate = strikeRate;
+      }
+
       @Override
       public String toString() {
             return "IPLBatsmanCSV{" +

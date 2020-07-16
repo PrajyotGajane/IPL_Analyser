@@ -1,5 +1,7 @@
 package com.bridgelabz.IPL_Analyser.models;
 
+import com.bridgelabz.IPL_Analyser.controller.IPLAnalyser;
+
 public class IPLDAO {
       public String player;
       public int match;
@@ -36,5 +38,10 @@ public class IPLDAO {
             fiveWicket = csvStat.fiveWicket;
             fourWicket = csvStat.fourWicket;
             wicket = csvStat.wicket;
+      }
+      public Object getSpecificCensusData(){
+            //if(country.equals(IPLAnalyser.Player.BATSMAN))
+                  return new IPLBatsmanCSV(this.player,this.runs,this.average,this.strikeRate);
+            //return new USCensus(this.state, this.stateId,this.area, this.population, this.populationDensity, this.area);
       }
 }
